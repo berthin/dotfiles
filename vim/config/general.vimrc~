@@ -396,4 +396,4 @@ let g:airline#extensions#tabline#enabled = 1
 " to install powerline fonts: https://github.com/powerline/fonts
 let g:airline_powerline_fonts = 1
 " set theme
-let g:airline_theme = 'dark'
+" let g:airline_theme = 'vimagit'
