@@ -1,5 +1,5 @@
 " source $HOME/dotfiles/vim/config/keys.vimrc
-set rtp+=~/dotfiles/vim/vundle/Vundle.vim
+set rtp+=~/dotfiles/vim/bundle/Vundle.vim
 
 call vundle#begin()
 
@@ -15,6 +15,9 @@ Plugin 'vim-airline/vim-airline-themes'
 
 " NerdTree
 Plugin 'scrooloose/nerdtree'
+
+" theme
+Plugin 'jpo/vim-railscasts-theme'
 
 call vundle#end()
 

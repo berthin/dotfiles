@@ -19,7 +19,6 @@ let g:mapleader = ","
 " Fast saving
 nmap <leader>w :w!<cr>
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -74,6 +73,7 @@ set novisualbell
 set t_vb=
 set tm=500
 set number
+set relativenumber
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -85,7 +85,7 @@ syntax enable
 
 " colorscheme desert
 "set background=dark>>>
-"set background=light"<<<
+"set background=light "<<<
 "colorscheme solarized
 "let g:solarized_termcolors=256
 
