@@ -1,4 +1,46 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Maintainer: 
+"       Amir Salihefendic
+"       http://amix.dk - amix@amix.dk
+"
+" Version: 
+"       5.0 - 29/05/12 15:43:36
+"
+" Blog_post: 
+"       http://amix.dk/blog/post/19691#The-ultimate-Vim-configuration-on-Github
+"
+" Awesome_version:
+"       Get this config, nice color schemes and lots of plugins!
+"
+"       Install the awesome version from:
+"
+"           https://github.com/amix/vimrc
+"
+" Syntax_highlighted:
+"       http://amix.dk/vim/vimrc.html
+"
+" Raw_version: 
+"       http://amix.dk/vim/vimrc.txt
+"
+" Sections:
+"    -> General
+"    -> VIM user interface
+"    -> Colors and Fonts
+"    -> Files and backups
+"    -> Text, tab and indent related
+"    -> Visual mode related
+"    -> Moving around, tabs and buffers
+"    -> Status line
+"    -> Editing mappings
+"    -> vimgrep searching and cope displaying
+"    -> Spell checking
+"    -> Misc
+"    -> Helper functions
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
@@ -79,15 +121,19 @@ set number
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set t_Co=256
+" set t_Co=256 """<<<
 " Enable syntax highlighting
 syntax enable
-
+set background=dark
+" colorscheme solarized
 " colorscheme desert
-"set background=dark>>>
-"set background=light"<<<
-"colorscheme solarized
-"let g:solarized_termcolors=256
+" "set background=dark>>>
+" colorscheme solarized
+""let g:solarized_termcolors=256
+""colorscheme solarized
+" colorscheme desert
+colorscheme desert "darkblue
+
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -123,8 +169,8 @@ set expandtab
 set smarttab
 
 " 1 tab == 4 spaces
-set shiftwidth=2
-set tabstop=2
+set shiftwidth=4
+set tabstop=4
 
 " Linebreak on 500 characters
 set lbr
@@ -381,19 +427,24 @@ let OmniCpp_ShowPrototypeInAbbr = 1 " show function prototype (i.e. parameters) 
 map <C-F12> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
 " add current directory's generated tags file to available tags
 set tags+=~/myTags/std3.3tags
-vmap <F3> "+y
-map <F4> "+p
 
-au FocusLost * :set number
-au FocusGained * :set relativenumber
+function! ExecCommand(cmd)
+  let result = system(a:cmd)
+  return result
+endfunction
 
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
+function! AppendCommandResult(cmd)
+  let cmd_output = ExecCommand(a:cmd)
+  let result = substitute(cmd_output, '[\]\|[[:cntrl:]]', '', 'g')
+  " Append space + result to current line without moving cursor.
+  call setline(line('.'), getline('.') . ' ' . result)
+endfunction
 
+function! GetIssueNumberGit()
+  let cur_path = expand('%:p:h')
+  let cmd = 'git -C '. cur_path .' log | grep Issue | cut -d : -f2 | head -n 1'
+  call AppendCommandResult(cmd)
+endfunction
 
-" -- airline
-let g:airline#extensions#tabline#enabled = 1
-" to install powerline fonts: https://github.com/powerline/fonts
-let g:airline_powerline_fonts = 1
-" set theme
-" let g:airline_theme = 'vimagit'
+" map to get the git number issue for the last commit
+nnoremap <F2> :call GetIssueNumberGit()<CR>
