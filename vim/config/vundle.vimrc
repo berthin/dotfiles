@@ -29,6 +29,8 @@ Plugin 'wincent/command-t'
 " Ack.vim
 Plugin 'mileszs/ack.vim'
 
+" Vim Tmux navigator
+Plugin 'christoomey/vim-tmux-navigator'
 
 call vundle#end()
 

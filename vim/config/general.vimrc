@@ -363,12 +363,3 @@ au FocusGained * :set relativenumber
 
 autocmd InsertEnter * :set number
 autocmd InsertLeave * :set relativenumber
-
-"-------------------------------------------------------------------------------
-"------------------------- my config
-" -- airline
-let g:airline#extensions#tabline#enabled = 1
-" to install powerline fonts: https://github.com/powerline/fonts
-let g:airline_powerline_fonts = 1
-" set theme, see: https://github.com/vim-airline/vim-airline/wiki/Screenshots
-let g:airline_theme = 'deus'

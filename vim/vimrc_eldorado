@@ -1,0 +1,146 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+" plugin from http://vim-scripts.org/vim/scripts.html
+" Plugin 'L9'
+" Git plugin not hosted on GitHub
+Plugin 'git://git.wincent.com/command-t.git'
+" git repos on your local machine (i.e. when working on your own plugin)
+""" Plugin 'file:///home/gmarik/path/to/plugin'
+" The sparkup vim script is in a subdirectory of this repo called vim.
+" Pass the path to set the runtimepath properly.
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+" Install L9 and avoid a Naming conflict if you've already installed a
+" different version somewhere else.
+" Plugin 'ascenator/L9', {'name': 'newL9'}
+
+" Status bar
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" NERDTree
+Plugin 'scrooloose/nerdtree'
+
+" VimTex
+Plugin 'lervag/vimtex'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
+"
+Plugin 'christoomey/vim-tmux-navigator'
+
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
+"
+" Write all buffers before navigating from Vim to tmux pane
+let g:tmux_navigator_save_on_switch = 2
+
+" Disable tmux navigator when zooming the Vim pane
+let g:tmux_navigator_disable_when_zoomed = 1
+
+set rnu
+set nu 
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Text, tab and indent related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Use spaces instead of tabs
+set expandtab
+
+" Be smart when using tabs ;)
+set smarttab
+
+" 1 tab == 4 spaces
+set shiftwidth=4
+set tabstop=4
+
+" Linebreak on 500 characters
+set lbr
+set tw=1000
+
+set ai "Auto indent
+set si "Smart indent
+set wrap "Wrap lines
+
+" Customize vim airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+
+" Customize NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
+" turn off warning remote server for vimlatex
+let g:vimtex_compiler_latexmk = {'callback' :0}
+
+" Fix this map
+" imap <F2> <esc> : r ! git log | grep Issue | head -n 1 | cut -d ':' -f2 <CR>
+
+let s:lastcmd = ''
+function! s:RunShellCommand(cmdline, bang)
+    " Support for repeating last cmd with bang:
+    let _ = a:bang != '' ? s:lastcmd : a:cmdline == '' ? '' : join(map(split(a:cmdline), 'expand(v:val)'))
+
+    if _ == ''
+        return
+    endif
+
+    let s:lastcmd = _
+    let bufnr = bufnr('%')
+    let winnr = bufwinnr(_)
+    " You can position the new window whenever you want, I chose below + right:
+    silent! execute  winnr < 0 ? 'belowright new ' . fnameescape(_) : winnr . 'wincmd w'
+    " I could set buftype=nofile, but then no switching back and forth buffers.
+    " The results are presented just for viewing, not editing, modify at will:
+    setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile wrap number
+
+    setlocal modifiable
+    silent! :%d
+    " Useful for debugging, if you encounter issues with fnameescape():
+    call setline(1, 'You entered:  ' . a:cmdline)
+    call setline(2, 'Expanded to:  ' . _)
+    call append(line('$'), substitute(getline(2), '.', '=', 'g'))
+
+    silent execute '$read !' . _
+    silent! execute 'autocmd BufUnload <buffer> execute bufwinnr(' . bufnr . ') . ''wincmd w'''
+    " If resizing is unwanted for commands with too much output, remove this line:
+    silent! execute 'autocmd BufEnter  <buffer> execute ''resize '' .  line(''$'')'
+    " You can use <localleader>r to re-execute the last command:
+    silent! execute 'nnoremap <silent> <buffer> <localleader>r :call <SID>RunShellCommand(''' . _ . ''', '''')<CR>'
+
+    execute 'resize ' . line('$')
+
+    setlocal nomodifiable
+    1
+endfunction " RunShellCommand(cmdline)
+command! -complete=shellcmd -nargs=* -bang Shell call s:RunShellCommand(<q-args>, '<bang>')
