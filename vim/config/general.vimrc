@@ -64,6 +64,7 @@ set magic
 
 " Show matching brackets when text indicator is over them
 set showmatch
+
 " How many tenths of a second to blink when matching brackets
 set mat=2
 
@@ -123,8 +124,8 @@ set expandtab
 set smarttab
 
 " 1 tab == 4 spaces
-set shiftwidth=2
-set tabstop=2
+set shiftwidth=4
+set tabstop=4
 
 " Linebreak on 500 characters
 set lbr
@@ -390,7 +391,8 @@ au FocusGained * :set relativenumber
 autocmd InsertEnter * :set number
 autocmd InsertLeave * :set relativenumber
 
-
+"-------------------------------------------------------------------------------
+"------------------------- my config
 " -- airline
 let g:airline#extensions#tabline#enabled = 1
 " to install powerline fonts: https://github.com/powerline/fonts
