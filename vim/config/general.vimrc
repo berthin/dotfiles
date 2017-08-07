@@ -73,37 +73,10 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
+
+" Set number and relative number
 set number
 set relativenumber
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set t_Co=256
-" Enable syntax highlighting
-syntax enable
-
-" colorscheme desert
-"set background=dark>>>
-"set background=light "<<<
-"colorscheme solarized
-"let g:solarized_termcolors=256
-
-" Set extra options when running in GUI mode
-if has("gui_running")
-    set guioptions-=T
-    set guioptions+=e
-    set t_Co=256
-    set guitablabel=%M\ %t
-endif
-
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
-
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -397,5 +370,5 @@ autocmd InsertLeave * :set relativenumber
 let g:airline#extensions#tabline#enabled = 1
 " to install powerline fonts: https://github.com/powerline/fonts
 let g:airline_powerline_fonts = 1
-" set theme
-let g:airline_theme = 'dark'
+" set theme, see: https://github.com/vim-airline/vim-airline/wiki/Screenshots
+let g:airline_theme = 'deus'
