@@ -16,6 +16,6 @@ endfunction
 function! GetIssueNumberGit()
   let cur_path = expand('%:p:h')
   echom cur_path
-  let cmd = 'git -C '. cur_path .' log | grep Issue | cut -d : -f2 | head -n 1'
+  let cmd = 'git -C '. cur_path .'/.. log | grep Issue | cut -d : -f2 | head -n 1'
   call AppendCommandResult(cmd)
 endfunction
