@@ -26,3 +26,10 @@ inoremap jK <ESC>
 inoremap Jk <ESC>
 inoremap JK <ESC>
 
+"-- Map moves (up-down)
+map <S-j> <C-D>
+map <S-k> <C-U>
+
+"-- Map CtrlP+Ctags
+"nnoremap <leader>. :CtrlPTag<cr>
+nnoremap <leader>p :CtrlPTag<cr>
