@@ -108,6 +108,7 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
+set colorcolumn=100
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -208,6 +209,10 @@ func! DeleteTrailingWS()
   %s/\s\+$//ge
   exe "normal `z"
 endfunc
+autocmd BufWrite *.c :call DeleteTrailingWS()
+autocmd BufWrite *.h :call DeleteTrailingWS()
+autocmd BufWrite *.hpp :call DeleteTrailingWS()
+autocmd BufWrite *.cpp :call DeleteTrailingWS()
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 

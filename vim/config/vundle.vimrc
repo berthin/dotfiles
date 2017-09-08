@@ -30,6 +30,9 @@ Plugin 'jpo/vim-railscasts-theme'
 " Ack.vim
 Plugin 'mileszs/ack.vim'
 
+" Autotag
+Plugin 'craigemery/vim-autotag'
+
 " Vim Tmux navigator
 Plugin 'christoomey/vim-tmux-navigator'
 

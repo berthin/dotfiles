@@ -1,1 +1,49 @@
-alias clr="tmux clear-history && clear"
+## General alias
+
+alias cd..="cd .."
+alias open="gnome-open"
+alias clr="clear && tmux clear-history"
+alias lss="ls -C --color=always | less -R"
+#alias ls="ls --color --group-directories-first -h -S -s"
+alias ipy="ipython3"
+alias xmod="xmodmap $HOME/dotfiles/xmodmap/xmodmap"
+export EDITOR=vim;
+
+## Work-around alias
+alias lock_phone="adb shell input keyevent 26"
+alias brel="python3 Scripts/build.py --target pc --compile-mode release all | grep error"
+alias bjni="python3 Scripts/build.py app --compile-mode release | grep -e error -e warning"
+alias bdeb="python3 Scripts/build.py --target pc --compile-mode debug all | grep error"
+alias bbuild="python3 Scripts/build.py all --target all --compile-mode all | grep error"
+alias rrel="./Bin/Linux/Release/BeautyTool -i ~/Pictures/lena.png -o /tmp -l Models/shape_predictor_68_face_landmarks.dat"
+alias rdeb="./Bin/Linux/Debug/BeautyTool -i ~/Pictures/lena.png -o /tmp -l Models/shape_predictor_68_face_landmarks.dat"
+alias jni="cd /home/berthin/Documents/project/BeautyShot/Source/BeautyJni"
+alias jnit="cd /home/berthin/Documents/project/BeautyShot/Test/BeautyJni"
+alias bs="cd /home/berthin/Documents/project/BeautyShot"
+alias tags="ctags -R --exclude=.git --exclude=Bin --exclude=Build"
+
+# Swap files
+function swap()         
+{
+  if [ $# -ne 2 ]; then
+    echo "Usage: swap file1 file2"
+  else
+    local TMPFILE=$(mktemp)
+    mv "$1" $TMPFILE
+    mv "$2" "$1"
+    mv $TMPFILE "$2"
+  fi
+} 
+
+# Go up cd
+function op
+{
+  num = $1
+  if [ $num -eq 0 ]; then
+    num = 1
+  fi
+  while [ $num -ne 0  ];do
+    cd ..
+    num = $( expr $num - 1   )
+  done
+}

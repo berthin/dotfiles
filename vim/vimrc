@@ -1,0 +1,7 @@
+source $HOME/dotfiles/vim/config/general.vimrc
+source $HOME/dotfiles/vim/config/vundle.vimrc
+source $HOME/dotfiles/vim/config/functions.vimrc
+source $HOME/dotfiles/vim/config/mappings.vimrc
+source $HOME/dotfiles/vim/config/themes.vimrc
+
+filetype plugin indent on

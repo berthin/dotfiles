@@ -31,3 +31,7 @@ let g:airline_powerline_fonts = 1
 
 " set theme, see: https://github.com/vim-airline/vim-airline/wiki/Screenshots
 " let g:airline_theme = 'deus'
+let g:airline_theme='bubblegum'
+
+hi Search cterm=NONE ctermfg=red ctermbg=white
+hi Visual cterm=NONE ctermfg=blue ctermbg=white

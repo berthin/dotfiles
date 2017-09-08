@@ -1,0 +1,24 @@
+## Editor
+export EDITOR=vim
+
+# add android sdk
+export ANDROID_HOME=$HOME/Android/Sdk
+
+# Add ANDROID_NDK
+export ANDROID_NDK=$HOME/Android/Sdk/ndk-bundle
+
+# Add adb
+export PATH="$HOME/Android/Sdk/platform-tools/:$PATH"
+
+# Add monkeyrunner
+export PATH="$HOME/Android/Sdk/tools/bin/:$PATH"
+
+# Add extra memory to Java VM
+export _JAVA_OPTIONS="-Xmx2048m"
+
+# for compiling shared objects
+export LD_LIBRARY_PATH="$HOME/Documents/project/BeautyShot/Bin/Linux/Release/:$LD_LIBRARY_PATH"
+
+if [ "$TMUX" = "" ]; then 
+    tmux;
+fi
