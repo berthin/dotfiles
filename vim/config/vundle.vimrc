@@ -39,5 +39,8 @@ Plugin 'christoomey/vim-tmux-navigator'
 " CtrlP
 Plugin 'ctrlp.vim'
 
+" Nerd Commenter
+Plugin 'scrooloose/nerdcommenter'
+
 call vundle#end()
 

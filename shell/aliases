@@ -11,9 +11,9 @@ export EDITOR=vim;
 
 ## Work-around alias
 alias lock_phone="adb shell input keyevent 26"
-alias brel="python3 Scripts/build.py --target pc --compile-mode release all | grep error"
-alias bjni="python3 Scripts/build.py app --compile-mode release | grep -e error -e warning"
-alias bdeb="python3 Scripts/build.py --target pc --compile-mode debug all | grep error"
+alias br="python3 Scripts/build.py app --compile-mode release | grep -e error -e warning"
+alias bd="python3 Scripts/build.py app --compile-mode debug   | grep -e error -e warning"
+alias ba="python3 Scripts/build.py all --compile-mode all     | grep -e error -e warning"
 alias bbuild="python3 Scripts/build.py all --target all --compile-mode all | grep error"
 alias rrel="./Bin/Linux/Release/BeautyTool -i ~/Pictures/lena.png -o /tmp -l Models/shape_predictor_68_face_landmarks.dat"
 alias rdeb="./Bin/Linux/Debug/BeautyTool -i ~/Pictures/lena.png -o /tmp -l Models/shape_predictor_68_face_landmarks.dat"
