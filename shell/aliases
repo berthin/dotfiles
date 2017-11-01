@@ -5,7 +5,7 @@ alias open="gnome-open"
 alias clr="clear && tmux clear-history"
 alias lss="ls -C --color=always | less -R"
 #alias ls="ls --color --group-directories-first -h -S -s"
-alias ipy="ipython3"
+alias ipy="ipython3 --TerminalInteractiveShell.editing_mode=vi"
 alias xmod="xmodmap $HOME/dotfiles/xmodmap/xmodmap"
 export EDITOR=vim;
 
