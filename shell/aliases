@@ -19,7 +19,7 @@ alias rrel="./Bin/Linux/Release/BeautyTool -i ~/Pictures/lena.png -o /tmp -l Mod
 alias rdeb="./Bin/Linux/Debug/BeautyTool -i ~/Pictures/lena.png -o /tmp -l Models/shape_predictor_68_face_landmarks.dat"
 alias jni="cd /home/berthin/Documents/project/BeautyShot/Source/BeautyJni"
 alias jnit="cd /home/berthin/Documents/project/BeautyShot/Test/BeautyJni"
-alias bs="cd /home/berthin/Documents/project/BeautyShot"
+#alias bs="cd /home/berthin/Documents/project/BeautyShot"
 alias tags="ctags -R --exclude=.git --exclude=Bin --exclude=Build"
 
 # Swap files
@@ -46,4 +46,12 @@ function op
     cd ..
     num = $( expr $num - 1   )
   done
+}
+
+function adb_wifi()
+{
+    adb tcpip 5555;
+    sleep 2
+    ip_device=`adb shell ifconfig wlan0 | grep -e 'inet addr' | cut -d : -f2 | cut -d ' ' -f1`
+    adb connect $ip_device
 }

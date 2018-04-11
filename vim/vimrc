@@ -3,5 +3,6 @@ source $HOME/dotfiles/vim/config/vundle.vimrc
 source $HOME/dotfiles/vim/config/functions.vimrc
 source $HOME/dotfiles/vim/config/mappings.vimrc
 source $HOME/dotfiles/vim/config/themes.vimrc
+source $HOME/dotfiles/vim/starsearch.vim
 
 filetype plugin indent on

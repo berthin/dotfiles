@@ -19,3 +19,21 @@ function! GetIssueNumberGit()
   let cmd = 'git -C '. cur_path .'/.. log | grep Issue | cut -d "#" -f2 | head -n 1'
   call AppendCommandResult(cmd)
 endfunction
+
+" -- Change between header and source files
+function! SwapSourceHeader()
+  let cur_path = expand('%:r')
+  let extension = expand('%:e')
+  echom cur_path . '.' . extension
+  if extension == 'cpp'
+    execute "edit " . cur_path . ".hpp"
+  else
+    execute "edit " . cur_path . ".cpp"
+  endif
+endfunction
+
+" -- Function to call Ack with the word where the cursor is located
+function! AckCurrentWord()
+  let curr_word = expand('<c-word>')
+  execute "Ack " . curr_word
+endfunction

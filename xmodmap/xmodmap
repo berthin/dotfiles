@@ -8,3 +8,11 @@ add mod1 = Alt_L Meta_L
 clear Lock
 keycode  9 = Caps_Lock
 keycode 66 = Escape
+
+clear Shift
+keycode 23 = Shift_L
+keycode 50 = Tab
+add shift = Shift_L Shift_R
+
+keycode 10 = 1 exclam 1 exclam Tab exclamdown
+

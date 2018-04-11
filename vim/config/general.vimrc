@@ -22,6 +22,9 @@ nmap <leader>w :w!<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set fileformats
+set ffs=unix,dos
+
 " Set 7 lines to the cursor - when moving vertically using j/k
 set so=7
 
@@ -368,3 +371,23 @@ au FocusGained * :set relativenumber
 
 autocmd InsertEnter * :set number
 autocmd InsertLeave * :set relativenumber
+
+" Search with * and # without moving the cursor and without the blinking effect
+" This instruction has a problem since you need to set hlsearch each time even though it was
+" activated in the vimrc file
+" nmap <silent> # "syiw<Esc>: let @/ = @s <CR>
+"
+" Folding
+setlocal foldmethod=manual
+
+
+" -- Fugitive gitlab
+let g:fugitive_gitlab_domains = ['http://serv113.corp.eldorado.org.br/gitlab/']
+let g:gitlab_api_keys = {'gitlab.com': '13aXPNrXp8e2rGbSGDeU'}
+
+" -- Ack-vim
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep --cpp --python --java'
+endif
+
+

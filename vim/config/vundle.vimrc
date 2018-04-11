@@ -9,6 +9,12 @@ Plugin 'VundleVim/Vundle.vim'
 " Fugitive
 Plugin 'tpope/vim-fugitive'
 
+" Fugitive GitLab
+Plugin 'shumphrey/fugitive-gitlab.vim'
+
+" Buffergator
+Plugin 'jeetsukumaran/vim-buffergator'
+
 " Airline
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -41,6 +47,18 @@ Plugin 'ctrlp.vim'
 
 " Nerd Commenter
 Plugin 'scrooloose/nerdcommenter'
+
+" YouCompleteMe
+Plugin 'valloric/youcompleteme'
+
+" EasyGrep
+Plugin 'dkprice/vim-easygrep'
+
+" TagBar
+Plugin 'majutsushi/tagbar'
+
+" Autoclose
+Plugin 'Townk/vim-autoclose'
 
 call vundle#end()
 
