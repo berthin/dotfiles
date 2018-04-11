@@ -39,7 +39,7 @@ function swap()
 # Makedir and go
 function mkrdirgo()
 {
-    if [ $# -ne 1; ] then
+    if [ $# -ne 1; ]; then
         echo "Usage: mkdirgo file"
     else
         mkdir -p "$1"
