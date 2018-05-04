@@ -213,7 +213,7 @@ func! DeleteTrailingWS()
   exe "normal `z"
 endfunc
 autocmd BufWrite *.c :call DeleteTrailingWS()
-autocmd BufWrite *.h :call DeleteTrailingWS()
+"autocmd BufWrite *.h :call DeleteTrailingWS()
 autocmd BufWrite *.hpp :call DeleteTrailingWS()
 autocmd BufWrite *.cpp :call DeleteTrailingWS()
 autocmd BufWrite *.py :call DeleteTrailingWS()
