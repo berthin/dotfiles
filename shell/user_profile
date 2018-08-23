@@ -10,6 +10,9 @@ export ANDROID_NDK=$HOME/Android/Sdk/ndk-bundle
 # Add adb
 export PATH="$HOME/Android/Sdk/platform-tools/:$PATH"
 
+# Add lein
+export PATH="$HOME/lein/:$PATH"
+
 # Add monkeyrunner
 export PATH="$HOME/Android/Sdk/tools/bin/:$PATH"
 

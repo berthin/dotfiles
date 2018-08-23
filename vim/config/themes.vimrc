@@ -7,7 +7,7 @@ set t_Co=256
 syntax enable
 
 " Set colorscheme
-" colorscheme railscasts 
+colorscheme darkblue 
 
 " Set extra options when running in GUI mode
 if has("gui_running")

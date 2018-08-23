@@ -1,7 +1,6 @@
 ## General alias
 
 alias cd..="cd .."
-alias open="gnome-open"
 alias clr="clear && tmux clear-history"
 alias lss="ls -C --color=always | less -R"
 alias mk="mkdirgo"
