@@ -111,7 +111,7 @@ set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
 
-set colorcolumn=100
+set colorcolumn=70
 
 """"""""""""""""""""""""""""""
 " => Visual mode related
@@ -391,3 +391,4 @@ if executable('ag')
 endif
 
 
+set shell=/bin/bash

@@ -19,8 +19,9 @@ let g:tmux_navigator_disable_when_zoomed = 1
 " Customize NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
-" Tag Bar
-map <C-m> :TagbarToggle<CR>
+" -- Tag Bar
+" Note: tab-bar is unable because it gets annoying
+" map <C-m> :TagbarToggle<CR>
 
 "-- Map jk to ESC
 inoremap jk <ESC>

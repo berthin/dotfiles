@@ -66,3 +66,27 @@ function adb_wifi()
     ip_device=`adb shell ifconfig wlan0 | grep -e 'inet addr' | cut -d : -f2 | cut -d ' ' -f1`
     adb connect $ip_device
 }
+
+alias g++14="g++ -DLOCAL_PC -std=c++14"
+alias g++17="g++ -DLOCAL_PC -std=c++17"
+
+function compile_cpp17()
+{
+    echo "Compiling ". "$1.cpp"
+    g++17 "$1".cpp -o "$1"
+}
+
+function run()
+{
+    echo "Runninng ". "$1"
+    ./"$1"
+}
+function compile_run_cpp17()
+{
+    compile_cpp17 "$1"
+    run "$1"
+}
+
+alias c="compile_cpp17"
+alias r="run"
+alias cr="compile_run_cpp17"

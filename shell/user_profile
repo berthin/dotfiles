@@ -25,3 +25,6 @@ export PATH="$HOME/Android/Sdk/tools/bin/:$PATH"
 if [ "$TMUX" = "" ]; then 
     tmux;
 fi
+
+# Add anaconda
+export PATH="/anaconda3/bin/:$PATH"

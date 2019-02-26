@@ -58,7 +58,7 @@ Plugin 'dkprice/vim-easygrep'
 Plugin 'majutsushi/tagbar'
 
 " Autoclose
-Plugin 'Townk/vim-autoclose'
+"Plugin 'Townk/vim-autoclose'
 
 call vundle#end()
 
