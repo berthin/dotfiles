@@ -1,6 +1,16 @@
 ## Editor
 export EDITOR=vim
 
+# Grep speedup (need to double check)
+# https://stackoverflow.com/a/11777835
+# export LC_ALL=C
+#
+
+# Go
+export GOPATH=$HOME/Go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN
+
 # add android sdk
 export ANDROID_HOME=$HOME/Android/Sdk
 
